@@ -1,6 +1,7 @@
 package com.HTFsolarPicadinhos.controller;
 
-import com.HTFsolarPicadinhos.business.UsuarioDTO.UsuarioCreateDTO;
+import com.HTFsolarPicadinhos.business.dto.usuario.UsuarioCreateDTO;
+import com.HTFsolarPicadinhos.business.services.UsuarioService;
 import com.HTFsolarPicadinhos.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/usuario")
 @RequiredArgsConstructor
 public class UsuarioController {
+
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
+    private final UsuarioService usuarioService;
 
     @PostMapping
     public ResponseEntity<UsuarioCreateDTO> createUsuario(@RequestBody UsuarioCreateDTO dto){
-        return ResponseEntity.ok()
+        return ResponseEntity.ok(usuarioService.salvaUsuario(dto));
     }
 
 }

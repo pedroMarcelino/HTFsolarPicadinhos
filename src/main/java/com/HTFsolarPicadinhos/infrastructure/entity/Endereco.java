@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Endereco")
+@Table(name = "endereco")
 @Builder
 
 public class Endereco {
@@ -24,7 +24,7 @@ public class Endereco {
     private String rua;
 
     @Column(name = "numero")
-    private Long numero;
+    private String numero;
 
     @Column(name = "bairro")
     private String bairro;
